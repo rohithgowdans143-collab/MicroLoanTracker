@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register — MicroLend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/auth.css"/>
+  <link rel="stylesheet" href="css/register.css"/>
+</head>
+<body class="auth-body">
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="register-container">
+    <!-- Progress Bar -->
+    <div class="register-progress">
+      <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        MicroLend
+      </a>
+      <div class="progress-steps">
+        <div class="progress-step active" id="step-indicator-1">
+          <div class="step-circle">1</div>
+          <span>Role</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-indicator-2">
+          <div class="step-circle">2</div>
+          <span>Personal</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-indicator-3">
+          <div class="step-circle">3</div>
+          <span>Verify ID</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-indicator-4">
+          <div class="step-circle">4</div>
+          <span>Bank</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-indicator-5">
+          <div class="step-circle">5</div>
+          <span>Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="register-body">
+      <!-- STEP 1: Choose Role -->
+      <div class="reg-step active" id="reg-step-1">
+        <div class="step-header">
+          <h1>Join MicroLend</h1>
+          <p>Are you looking to borrow or lend?</p>
+        </div>
+        <div class="role-cards">
+          <div class="role-card" id="choose-borrower" data-role="borrower">
+            <div class="role-card-icon">🛒</div>
+            <h3>I'm a Borrower</h3>
+            <p>I need a microloan to grow my small business or meet urgent financial needs.</p>
+            <ul>
+              <li>✓ Loans from ₹1,000 to ₹5 Lakhs</li>
+              <li>✓ Flexible repayment plans</li>
+              <li>✓ Low interest rates (8–18% p.a.)</li>
+              <li>✓ Track daily sales & repayments</li>
+            </ul>
+            <div class="role-select-btn">Choose Borrower</div>
+          </div>
+          <div class="role-card" id="choose-lender" data-role="lender">
+            <div class="role-card-icon">💰</div>
+            <h3>I'm a Lender</h3>
+            <p>I want to invest in small vendors and earn consistent returns while making an impact.</p>
+            <ul>
+              <li>✓ Earn 12–24% annual returns</li>
+              <li>✓ Verified borrower profiles</li>
+              <li>✓ Full transparency & tracking</li>
+              <li>✓ RBI compliant platform</li>
+            </ul>
+            <div class="role-select-btn">Choose Lender</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Personal Information -->
+      <div class="reg-step" id="reg-step-2">
+        <div class="step-header">
+          <h1>Personal Information</h1>
+          <p>Tell us a little about yourself</p>
+        </div>
+        <form class="reg-form" id="personal-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name *</label>
+              <input type="text" id="first-name" placeholder="Rajesh" required/>
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name *</label>
+              <input type="text" id="last-name" placeholder="Kumar" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile Number *</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">+91</span>
+              <input type="tel" id="mobile" placeholder="9876543210" required pattern="[0-9]{10}" maxlength="10"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="rajesh@example.com"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dob">Date of Birth *</label>
+              <input type="date" id="dob" required/>
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender *</label>
+              <select id="gender" required>
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">Full Address *</label>
+            <textarea id="address" placeholder="House No., Street, City, State" rows="3" required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City *</label>
+              <input type="text" id="city" placeholder="Mumbai" required/>
+            </div>
+            <div class="form-group">
+              <label for="pincode">PIN Code *</label>
+              <input type="text" id="pincode" placeholder="400001" maxlength="6" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Create Password *</label>
+            <div class="input-wrapper">
+              <input type="password" id="reg-password" placeholder="Min. 8 characters" required/>
+              <button type="button" class="toggle-password" id="toggle-reg-pwd" aria-label="Toggle">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" stroke-width="2"/></svg>
+              </button>
+            </div>
+            <div class="password-strength" id="pwd-strength">
+              <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+              <span id="strength-label">Enter password</span>
+            </div>
+          </div>
+          <button type="button" class="btn-auth" id="personal-next">Continue</button>
+        </form>
+      </div>
+
+      <!-- STEP 3: ID Verification -->
+      <div class="reg-step" id="reg-step-3">
+        <div class="step-header">
+          <h1>Identity Verification</h1>
+          <p>Verify your identity with a government-issued ID for trust and security</p>
+        </div>
+        <div class="id-verification">
+          <div class="id-type-selector">
+            <button class="id-type-btn active" id="id-aadhaar-btn" data-id="aadhaar">
+              <span class="id-flag">🇮🇳</span> Aadhaar Card
+            </button>
+            <button class="id-type-btn" id="id-pan-btn" data-id="pan">
+              <span class="id-flag">💳</span> PAN Card
+            </button>
+            <button class="id-type-btn" id="id-dl-btn" data-id="dl">
+              <span class="id-flag">🚗</span> Driving License
+            </button>
+            <button class="id-type-btn" id="id-voter-btn" data-id="voter">
+              <span class="id-flag">🗳️</span> Voter ID
+            </button>
+          </div>
+
+          <!-- Aadhaar -->
+          <div class="id-form active" id="aadhaar-form">
+            <div class="id-card-preview aadhaar-card">
+              <div class="id-card-header">
+                <span>भारत सरकार | Government of India</span>
+                <strong>आधार</strong>
+              </div>
+              <div class="id-card-body">
+                <div class="id-card-photo">👤</div>
+                <div class="id-card-info">
+                  <p id="aadhaar-preview-name">Your Name</p>
+                  <small id="aadhaar-preview-dob">DOB: DD/MM/YYYY</small>
+                  <div class="aadhaar-number-preview" id="aadhaar-preview-num">XXXX XXXX XXXX</div>
+                </div>
+              </div>
+            </div>
+            <form class="reg-form" id="aadhaar-verify-form">
+              <div class="form-group">
+                <label for="aadhaar-number">Aadhaar Number *</label>
+                <input type="text" id="aadhaar-number" placeholder="XXXX XXXX XXXX" maxlength="14" required/>
+                <small class="field-hint">12-digit Aadhaar number</small>
+              </div>
+              <div class="form-group">
+                <label>Upload Aadhaar Card (Front) *</label>
+                <div class="file-upload-zone" id="aadhaar-front-zone">
+                  <div class="upload-icon">📄</div>
+                  <p>Click or drag to upload front side</p>
+                  <small>JPG, PNG or PDF (Max 5MB)</small>
+                  <input type="file" accept="image/*,.pdf" id="aadhaar-front-file" hidden/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Upload Aadhaar Card (Back) *</label>
+                <div class="file-upload-zone" id="aadhaar-back-zone">
+                  <div class="upload-icon">📄</div>
+                  <p>Click or drag to upload back side</p>
+                  <small>JPG, PNG or PDF (Max 5MB)</small>
+                  <input type="file" accept="image/*,.pdf" id="aadhaar-back-file" hidden/>
+                </div>
+              </div>
+              <div class="info-box">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2"/></svg>
+                <p>An OTP will be sent to your Aadhaar-registered mobile number for verification.</p>
+              </div>
+              <button type="button" class="btn-auth" id="send-aadhaar-otp">Send OTP to Verify</button>
+            </form>
+            <div class="otp-verify-section hidden" id="aadhaar-otp-section">
+              <p class="otp-sent-msg">OTP sent to ****XXXX. Enter to confirm:</p>
+              <div class="otp-inputs">
+                <input type="text" maxlength="1" class="otp-input" id="a-otp-1"/>
+                <input type="text" maxlength="1" class="otp-input" id="a-otp-2"/>
+                <input type="text" maxlength="1" class="otp-input" id="a-otp-3"/>
+                <input type="text" maxlength="1" class="otp-input" id="a-otp-4"/>
+                <input type="text" maxlength="1" class="otp-input" id="a-otp-5"/>
+                <input type="text" maxlength="1" class="otp-input" id="a-otp-6"/>
+              </div>
+              <button type="button" class="btn-auth" id="verify-aadhaar-btn">Verify Aadhaar</button>
+            </div>
+          </div>
+
+          <!-- PAN -->
+          <div class="id-form" id="pan-form">
+            <form class="reg-form">
+              <div class="form-group">
+                <label for="pan-number">PAN Card Number *</label>
+                <input type="text" id="pan-number" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase"/>
+              </div>
+              <div class="form-group">
+                <label>Upload PAN Card *</label>
+                <div class="file-upload-zone" id="pan-upload-zone">
+                  <div class="upload-icon">💳</div>
+                  <p>Click or drag to upload PAN card</p>
+                  <small>JPG, PNG or PDF (Max 5MB)</small>
+                  <input type="file" accept="image/*,.pdf" id="pan-file" hidden/>
+                </div>
+              </div>
+              <button type="button" class="btn-auth" id="verify-pan-btn">Verify PAN</button>
+            </form>
+          </div>
+
+          <!-- Driving License -->
+          <div class="id-form" id="dl-form">
+            <form class="reg-form">
+              <div class="form-group">
+                <label for="dl-number">Driving License Number *</label>
+                <input type="text" id="dl-number" placeholder="MH01-XXXXXXXX" style="text-transform:uppercase"/>
+              </div>
+              <div class="form-group">
+                <label>Upload Driving License *</label>
+                <div class="file-upload-zone" id="dl-upload-zone">
+                  <div class="upload-icon">🚗</div>
+                  <p>Click or drag to upload license</p>
+                  <small>JPG, PNG or PDF (Max 5MB)</small>
+                  <input type="file" accept="image/*,.pdf" id="dl-file" hidden/>
+                </div>
+              </div>
+              <button type="button" class="btn-auth" id="verify-dl-btn">Verify License</button>
+            </form>
+          </div>
+
+          <!-- Voter ID -->
+          <div class="id-form" id="voter-form">
+            <form class="reg-form">
+              <div class="form-group">
+                <label for="voter-number">Voter ID Number *</label>
+                <input type="text" id="voter-number" placeholder="ABC1234567" style="text-transform:uppercase"/>
+              </div>
+              <div class="form-group">
+                <label>Upload Voter ID *</label>
+                <div class="file-upload-zone" id="voter-upload-zone">
+                  <div class="upload-icon">🗳️</div>
+                  <p>Click or drag to upload Voter ID</p>
+                  <small>JPG, PNG or PDF (Max 5MB)</small>
+                  <input type="file" accept="image/*,.pdf" id="voter-file" hidden/>
+                </div>
+              </div>
+              <button type="button" class="btn-auth" id="verify-voter-btn">Verify Voter ID</button>
+            </form>
+          </div>
+
+          <div class="verification-status hidden" id="verification-success">
+            <div class="v-success-icon">✅</div>
+            <h3>Identity Verified!</h3>
+            <p>Your government ID has been successfully verified. You're now a trusted member of MicroLend.</p>
+            <button type="button" class="btn-auth" id="after-verify-next">Continue to Bank Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: Bank Account -->
+      <div class="reg-step" id="reg-step-4">
+        <div class="step-header">
+          <h1>Bank Account Details</h1>
+          <p>Link your bank account for seamless loan disbursement and repayments</p>
+        </div>
+        <form class="reg-form" id="bank-form">
+          <div class="form-group">
+            <label for="account-name">Account Holder Name *</label>
+            <input type="text" id="account-name" placeholder="As per bank records" required/>
+          </div>
+          <div class="form-group">
+            <label for="account-number">Account Number *</label>
+            <input type="text" id="account-number" placeholder="Enter account number" required/>
+          </div>
+          <div class="form-group">
+            <label for="confirm-account">Re-enter Account Number *</label>
+            <input type="text" id="confirm-account" placeholder="Re-enter account number" required/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ifsc">IFSC Code *</label>
+              <input type="text" id="ifsc" placeholder="SBIN0001234" maxlength="11" style="text-transform:uppercase" required/>
+            </div>
+            <div class="form-group">
+              <label for="bank-name">Bank Name</label>
+              <input type="text" id="bank-name" placeholder="Auto-filled" readonly/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="upi-id">UPI ID (Optional)</label>
+            <input type="text" id="upi-id" placeholder="yourname@upi"/>
+          </div>
+          <div class="form-group" id="business-type-group">
+            <label for="business-type">Type of Business *</label>
+            <select id="business-type" required>
+              <option value="">Select your business type</option>
+              <option value="vegetable">Vegetable/Fruit Vendor</option>
+              <option value="textile">Textile/Clothing</option>
+              <option value="food">Food/Restaurant</option>
+              <option value="electronics">Electronics</option>
+              <option value="grocery">Grocery Store</option>
+              <option value="auto">Auto/Rickshaw</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="button" class="btn-auth" id="bank-next">Create Account</button>
+        </form>
+      </div>
+
+      <!-- STEP 5: Success -->
+      <div class="reg-step" id="reg-step-5">
+        <div class="success-screen">
+          <div class="success-animation">
+            <div class="success-circle">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" stroke="url(#successGrad)" stroke-width="3" fill="none" class="success-ring"/>
+                <path d="M30 50l15 15 25-25" stroke="#22C55E" stroke-width="4" fill="none" stroke-linecap="round" class="success-check"/>
+                <defs>
+                  <linearGradient id="successGrad" x1="0" y1="0" x2="100" y2="100">
+                    <stop stop-color="#6C63FF"/><stop offset="1" stop-color="#3ECFCF"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <h1>Welcome to MicroLend! 🎉</h1>
+          <p id="success-message">Your account has been created and verified. You're all set to start your journey!</p>
+          <div class="success-details" id="success-details">
+            <div class="s-detail">
+              <span>Account ID</span>
+              <strong id="generated-id">ML-2024-XXXXX</strong>
+            </div>
+            <div class="s-detail">
+              <span>Status</span>
+              <strong class="green">Verified ✓</strong>
+            </div>
+          </div>
+          <a href="dashboard-borrower.html" class="btn-auth" id="go-to-dashboard">Go to Dashboard</a>
+          <a href="login.html" class="auth-switch-link">Login Instead</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/
+.DS_Store
+backend/cloudflare_url.txt
+backend/public_url.txt
